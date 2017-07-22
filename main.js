@@ -7,3 +7,50 @@
 // 3. Create your `fetch` request that is called after a submission
 // 4. Create a way to append the fetch results to your page
 // 5. Create a way to listen for a click that will play the song in the audio play
+
+let songs = document.querySelector(".results");
+let audioContent = document.querySelector(".player");
+let audio = document.querySelector(".music-player");
+let searchBar = document.querySelector(".search-form");
+let search = document.querySelector("#search")
+let button = document.querySelector("#searchButton")
+let play = document.querySelectorAll(".playSong")
+let buy = document.querySelectorAll(".buySong")
+
+
+
+
+button.addEventListener("click", function(){
+
+fetch(`https://itunes.apple.com/search?term==${search.value}`)
+
+.then(function(response){
+  if (response.status === 200){
+    return response.json();
+  }
+})
+
+.then(function(data){
+  console.log(data);
+  songs.innerHTML = "";
+  let results = data.results;
+  for (var i = 0; i < results.length; i++) {
+    songs.innerHTML += `
+    <div class="songContainer">
+      <img src=${results[i].artworkUrl100
+} >
+<button type="button" name="button" id="playSong" onclick="" >PREVIEW SONG</button><span><button type="button" name="button" id="buySong" onclick="window.location='${results[i].trackViewUrl}'; return false;">BUY ON iTUNES</button>
+<h3>${results[i].trackName}</h3>
+<h2>${results[i].artistName}<h2>
+    </div>
+    `
+
+  }
+
+})
+
+.catch(function(error){
+  console.error(error.message);
+})
+
+})
