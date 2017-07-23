@@ -43,7 +43,7 @@ content.addEventListener("click", function(e) {
     <div class="songContainer">
       <img src=${results[i].artworkUrl100
 } >
-<button type="button" name="button" id="playSong" onclick="" >PREVIEW SONG</button><span><button type="button" name="button" id="buySong" onclick="window.location='${results[i].trackViewUrl}'; return false;">BUY ON iTUNES</button>
+<button type="button" name="button" id="playSong" onclick="" >PREVIEW SONG</button><span><a href=${results[i].trackViewUrl} target="_blank"><button type="button" name="button" id="buySong">BUY ON iTUNES</button></a></span>
 <h3>${results[i].trackName}</h3>
 <h2>${results[i].artistName}<h2>
     </div>
@@ -59,7 +59,7 @@ content.addEventListener("click", function(e) {
 
   } else if (e.target && e.target.matches("#playSong")) {
 
-    
+
 
 
 }
