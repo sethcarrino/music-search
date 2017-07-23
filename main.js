@@ -8,6 +8,7 @@
 // 4. Create a way to append the fetch results to your page
 // 5. Create a way to listen for a click that will play the song in the audio play
 
+let content = document.querySelector(".container");
 let songs = document.querySelector(".results");
 let audioContent = document.querySelector(".player");
 let audio = document.querySelector(".music-player");
@@ -20,22 +21,25 @@ let buy = document.querySelectorAll(".buySong")
 
 
 
-button.addEventListener("click", function(){
+content.addEventListener("click", function(e) {
 
-fetch(`https://itunes.apple.com/search?term==${search.value}`)
+  if (e.target && e.target.matches("#searchButton")) {
 
-.then(function(response){
-  if (response.status === 200){
-    return response.json();
-  }
-})
 
-.then(function(data){
-  console.log(data);
-  songs.innerHTML = "";
-  let results = data.results;
-  for (var i = 0; i < results.length; i++) {
-    songs.innerHTML += `
+    fetch(`https://itunes.apple.com/search?term==${search.value}`)
+
+      .then(function(response) {
+        if (response.status === 200) {
+          return response.json();
+        }
+      })
+
+      .then(function(data) {
+        console.log(data);
+        songs.innerHTML = "";
+        let results = data.results;
+        for (var i = 0; i < results.length; i++) {
+          songs.innerHTML += `
     <div class="songContainer">
       <img src=${results[i].artworkUrl100
 } >
@@ -45,12 +49,23 @@ fetch(`https://itunes.apple.com/search?term==${search.value}`)
     </div>
     `
 
-  }
+        }
+
+      })
+
+      .catch(function(error) {
+        console.error(error.message);
+      })
+
+  } else if (e.target && e.target.matches("#playSong")) {
+
+    
+
+
+}
 
 })
 
-.catch(function(error){
-  console.error(error.message);
-})
 
-})
+
+  // http://a434.phobos.apple.com/us/r30/Music1/v4/6e/19/c9/6e19c93c-b5a6-f6ee-f513-bd430a018029/mzaf_3530332765515533440.plus.aac.p.m4a

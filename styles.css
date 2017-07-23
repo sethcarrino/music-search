@@ -132,10 +132,12 @@ form select{
   display: flex;
   justify-content: center;
   padding: 1.8em;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .music-player{
-  width: 80%;
+  width: 100%;
 }
 
 #playSong{
