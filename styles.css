@@ -107,9 +107,7 @@ header img{
   font-size: 15px;
 }
 
-form input[type="search"],
-form textarea,
-form select{
+form input[type="search"] {
 
     outline: none;
     display: block;
@@ -140,7 +138,7 @@ form select{
   width: 100%;
 }
 
-#playSong{
+.playSong{
   border: none;
   padding: .5em;
   margin-top: 1em;
@@ -152,7 +150,7 @@ form select{
   outline: none;
 }
 
-#buySong{
+.buySong{
   border: none;
   padding: .5em;
   margin-top: 1em;
