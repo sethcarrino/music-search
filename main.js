@@ -44,8 +44,12 @@ button.addEventListener("click", function searchSongs() {
         let play = document.querySelectorAll('.playSong');
         play[i].addEventListener('click', function() {
           audioContent.innerHTML = `
-                  <p>Now playing:  ${results[i].trackName} - ${results[i].artistName}</p>
-                  <audio src="${results[i].previewUrl}" autoplay controls></audio>
+
+                  <audio class="music-player" src="${results[i].previewUrl}" autoplay controls></audio>
+                  <div id="nowPlaying">
+                  <p>Now playing:
+                  ${results[i].trackName} - ${results[i].artistName}</p>
+                  </div>
                 `
         })
       }
